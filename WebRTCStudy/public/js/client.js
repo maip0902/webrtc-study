@@ -7,7 +7,7 @@ const g_elementDivJoinScreen = document.getElementById( "div_join_screen" );
 const g_elementDivChatScreen = document.getElementById( "div_chat_screen" );
 const g_elementInputUserName = document.getElementById( "input_username" );
 
-const g_elementTextRemoteUserName = document.getElementById( "text_remote_username" );
+// const g_elementTextRemoteUserName = document.getElementById( "text_remote_username" );
 
 const g_elementCheckboxCamera = document.getElementById( "checkbox_camera" );
 const g_elementCheckboxMicrophone = document.getElementById( "checkbox_microphone" );
@@ -1007,8 +1007,10 @@ g_socket.on(
             // OfferSDPの設定とAnswerSDPの作成
             console.log( "Call : setOfferSDP_and_createAnswerSDP()" );
             setOfferSDP_and_createAnswerSDP( rtcPeerConnection, objData.data );   // 受信したSDPオブジェクトを渡す。
+            // リモート情報表示用のHTML要素の追加
+            appendRemoteInfoElement( strRemoteSocketID, objData.username );
 
-            g_elementTextRemoteUserName.value = objData.username;
+            // g_elementTextRemoteUserName.value = objData.username;
         }
         else if( "answer" === objData.type )
         {
@@ -1026,8 +1028,9 @@ g_socket.on(
             // AnswerSDPの設定
             console.log( "Call : setAnswerSDP()" );
             setAnswerSDP( rtcPeerConnection, objData.data );   // 受信したSDPオブジェクトを渡す。
-
-            g_elementTextRemoteUserName.value = objData.username;
+            // リモート情報表示用のHTML要素の追加
+            appendRemoteInfoElement( strRemoteSocketID, objData.username );
+            // g_elementTextRemoteUserName.value = objData.username;
             // if( !g_rtcPeerConnection )
             // {   // コネクションオブジェクトがない
             //     alert( "Connection object does not exist." );
