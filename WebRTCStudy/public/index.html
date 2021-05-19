@@ -1,76 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--    <meta charset="utf-8" />-->
-<!--    <title>My Video Chat</title>-->
-<!--    <style type="text/css">-->
-<!--        input:read-only, textarea:read-only {-->
-<!--            background-color: #CCC;-->
-<!--        }-->
-<!--    </style>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <h1>My Video Chat</h1>-->
-
-<!--    <input type="checkbox" id="checkbox_camera" onclick="onclickCheckbox_CameraMicrophone()">Camera-->
-<!--    <input type="checkbox" id="checkbox_microphone" onclick="onclickCheckbox_CameraMicrophone()">Microphone-->
-<!--    <br />-->
-<!--    <video id="video_local" width="320" height="240" style="border: 1px solid black;" autoplay></video><audio id="audio_local" autoplay></audio>-->
-<!--    <video id="video_remote" width="320" height="240" style="border: 1px solid black;" autoplay></video><audio id="audio_remote" autoplay></audio>-->
-
-<!--    <br />-->
-<!--    <form action="" onsubmit="onsubmitButton_SendMessage(); return false;">-->
-<!--        <input type="text" id="text_message_for_send" size="40" /><input type="submit" value="Send message" />-->
-<!--    </form>-->
-<!--    <textarea id="textarea_message_received" rows="10" cols="60" readonly="readonly"></textarea>-->
-
-<!--&lt;!&ndash;    <table border="1">&ndash;&gt;-->
-<!--&lt;!&ndash;        <tbody>&ndash;&gt;-->
-<!--&lt;!&ndash;        <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td></td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td>Offer side</td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td>Answer side</td>&ndash;&gt;-->
-<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;        <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td>OfferSDP</td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td>&ndash;&gt;-->
-<!--&lt;!&ndash;                <button onclick="onclickButton_CreateOfferSDP()">Create OfferSDP.</button>&ndash;&gt;-->
-<!--&lt;!&ndash;                <br>&ndash;&gt;-->
-<!--&lt;!&ndash;                <textarea id="textarea_offerside_offsersdp" rows="10" cols="40" readonly="readonly"></textarea>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td>&ndash;&gt;-->
-<!--&lt;!&ndash;                <br>&ndash;&gt;-->
-<!--&lt;!&ndash;                <textarea id="textarea_answerside_offsersdp" rows="10" cols="40"></textarea>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;        <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td>AnswerSDP</td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td>&ndash;&gt;-->
-<!--&lt;!&ndash;                <br>&ndash;&gt;-->
-<!--&lt;!&ndash;                <textarea id="textarea_offerside_answersdp" rows="10" cols="40"></textarea><br>&ndash;&gt;-->
-<!--&lt;!&ndash;                <button onclick="onclickButton_SetAnswerSDPthenChatStarts()">Set AnswerSDP. Then the chat starts.</button>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td>&ndash;&gt;-->
-<!--&lt;!&ndash;                <button onclick="onclickButton_SetOfferSDPandCreateAnswerSDP()">Set OfferSDP and Create AnswerSDP.</button>&ndash;&gt;-->
-<!--&lt;!&ndash;                <br>&ndash;&gt;-->
-<!--&lt;!&ndash;                <textarea id="textarea_answerside_answersdp" rows="10" cols="40" readonly="readonly"></textarea><br>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;        </tbody>&ndash;&gt;-->
-<!--&lt;!&ndash;    </table>&ndash;&gt;-->
-<!--    <br />-->
-<!--    <button onclick="onclickButton_SendOfferSDP()">Send OfferSDP.</button>-->
-<!--    <button onclick="onclickButton_LeaveChat()">Leave Chat</button>-->
-
-<!--    <div id="div_userinfo" style="display: flex; flex-wrap: wrap">-->
-<!--        <div border="1px solid black"><input type="text" id="text_local_username" readonly="readonly"><br /><video id="video_local" width="320" height="240" ; border: 1px solid black;" autoplay></video></div>-->
-<!--        &lt;!&ndash; <div border="1px solid black"><input type="text" id="text_remote_username" readonly="readonly"><br /><video id="video_remote" width="320" height="240" ; border: 1px solid black;" autoplay></video><audio id="audio_remote" autoplay></audio></div> &ndash;&gt;-->
-<!--    </div>-->
-
-<!--    <script src="/socket.io/socket.io.js"></script>-->
-<!--    <script src="./js/client.js"></script>-->
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -115,7 +42,6 @@
         <br />
         <div id="div_userinfo" style="display: flex; flex-wrap: wrap">
             <div border="1px solid black"><input type="text" id="text_username" readonly="readonly"><br /><video id="video_local" width="320" height="240" style="border: 1px solid black;" autoplay></video></div>
-<!--            <div border="1px solid black"><input type="text" id="text_remote_username" readonly="readonly"><br /><video id="video_remote" width="320" height="240" style="border: 1px solid black;" autoplay></video><audio id="audio_remote" autoplay></audio></div>-->
         </div>
 
         <!-- エンターキーによるボタン押下を行うために、<button>ではなく<form>と<input type="submit">を使用。
@@ -124,9 +50,6 @@
             <input type="text" id="text_message_for_send" size="40" /><input type="submit" value="Send message" />
         </form>
         <textarea id="textarea_message_received" rows="10" cols="60" readonly="readonly"></textarea>
-
-        <!-- <br />
-        <button onclick="onclickButton_SendOfferSDP()">Send OfferSDP.</button> -->
 
         <br />
         <button onclick="onclickButton_LeaveChat()">Leave Chat.</button>

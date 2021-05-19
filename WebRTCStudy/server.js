@@ -31,18 +31,6 @@ io.on(
                 console.log( "disconnect : ", socket.id );
             } );
 
-        // signalingデータ受信時の処理
-        // ・クライアント側のsignalingデータ送信「socket.emit( "signaling", objData );」に対する処理
-        // socket.on(
-        //     "signaling",
-        //     ( objData ) =>
-        //     {
-        //         console.log( "signaling : ", socket.id );
-        //         console.log( "- type : ", objData.type );
-        //
-        //         // 送信元以外の全員に送信
-        //         socket.broadcast.emit( "signaling", objData );
-        //     } );
         socket.on(
             "signaling",
             ( objData ) =>
