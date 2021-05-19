@@ -21,10 +21,8 @@ const g_elementVideoLocal = document.getElementById( "video_local" );
 const g_elementTextMessageForSend = document.getElementById( "text_message_for_send" );
 const g_elementTextareaMessageReceived = document.getElementById( "textarea_message_received" );
 
-// let g_rtcPeerConnection = null;
 let g_mapRtcPeerConnection = new Map();
-
-const g_socket = io.connect();
+const g_socket = io("http://localhost:8000");
 
 
 // カメラとマイクのOn/Offのチェックボックスを押すと呼ばれる関数
